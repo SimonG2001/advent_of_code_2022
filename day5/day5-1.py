@@ -14,7 +14,7 @@ with open('input.txt', 'r') as f:
                 for j in range(9):
                     if line[j*4+1] != " ":
                         b[j+1].append(line[j*4+1])
-                        
+
             elif i > 10:
                 spl = line.split()
                 count = int(spl[1])
