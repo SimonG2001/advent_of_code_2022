@@ -51,5 +51,16 @@ with open('input.txt', 'r') as f:
     needToFree = 30000000 - freeSpace
     dirs["/"] = calculateDir(2, alllines, "/")
     
+
+
+
 print("exersice 1: ", score)
 print("exersice 2: ", smallest)
+
+with open('input.txt') as file:
+    commands = file.read().split('\n')
+lines = [x.split(' ') for x in commands]
+dirs = {}
+curDirs = []
+print('Day 07 Part 1:', sum([x for x in dirs.values() if x <= 100000] if not (dirs := {}) and not (curDirs := []) and [((l[0] == '$' and l[1] == 'cd') and (((l[2] == '/') and (curDirs := ['//']) and not (dirs.update({'//':0}))) or (l[2] == '..' and curDirs.pop()) or ((curDir := '/'.join(curDirs) + '/' + l[2]) and not curDirs.append(curDir) and (not dirs.get(curDir) and not dirs.update({curDir:0}))))) or (l[0].isdigit() and [dirs.update({d: dirs[d] + int(l[0])}) for d in curDirs]) for l in [c.split(' ') for c in open('input.txt').read().split('\n')]] else ''))
+print('Day 07 Part 2:', min([x for x in dirs.values() if x > dirs['//']-40000000]) if not (dirs := {}) and not (curDirs := []) and [((l[0] == '$' and l[1] == 'cd') and (((l[2] == '/') and (curDirs := ['//']) and not (dirs.update({'//':0}))) or (l[2] == '..' and curDirs.pop()) or ((curDir := '/'.join(curDirs) + '/' + l[2]) and not curDirs.append(curDir) and (not dirs.get(curDir) and not dirs.update({curDir:0}))))) or (l[0].isdigit() and [dirs.update({d: dirs[d] + int(l[0])}) for d in curDirs]) for l in [c.split(' ') for c in open('input.txt').read().split('\n')]] else '')
