@@ -1,9 +1,8 @@
 
-def isAdjacent(hx, hy, tx, ty):
-    return abs(hx - tx) <= 1 and abs(hy - ty) <= 1
+
 
 def moveTail(hx, hy, tx, ty):
-    if not isAdjacent(hx, hy, tx, ty):
+    if not (abs(hx - tx) <= 1 and abs(hy - ty) <= 1):
         if hx == tx:
             if hy > ty:
                 ty += 1
@@ -47,20 +46,17 @@ def moveTail(hx, hy, tx, ty):
 
 with open('input.txt', 'r') as f:
     
-    visited = []
-    tails = {}
+    visited , tails= [], {}
+
     for i in range(10):
         tails[i] = [0, 0]
     visited.append("0 0")
-    headV = []
-
-    headV.append("0 0")
+    
     lines = f.readlines()
 
     for line in lines:
         lin = line.split()
         for i in range(int(lin[1])):
-            #print("head: " + str(hx) + " " + str(hy) + " tail: " + str(tx) + " " + str(ty))
             if lin[0] == "U":
                 tails[0][1] += 1
             elif lin[0] == "R":
@@ -69,9 +65,6 @@ with open('input.txt', 'r') as f:
                 tails[0][1] -= 1
             elif lin[0] == "L":
                 tails[0][0] -= 1
-            hStr = str(tails[0][0]) + " " + str(tails[0][1])
-            if headV.count(hStr) == 0:
-                headV.append(hStr)
             
             for i in range(9):
                 tails[i+1][0], tails[i+1][1] = moveTail(tails[i][0], tails[i][1], tails[i+1][0], tails[i+1][1])
