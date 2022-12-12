@@ -1,11 +1,9 @@
 
-valueDict = {}
-sx, sy, ex, ey, y = 0,0,0,0, 0
+
 
 
     
-def bfs(visited, map, queue, ex, ey):
-    global valueDict
+def bfs(visited, map, queue, ex, ey, valueDict):
     while queue:
         
         m = queue.pop(0)
@@ -38,42 +36,44 @@ def bfs(visited, map, queue, ex, ey):
         
     return 520
     
+def main():
+    with open('input.txt', 'r') as f:
+        lines = f.readlines()
+        sx, sy, ex, ey, y = 0,0,0,0, 0
+        map = [] 
+        valueDict = {}
+        for line in lines:
+            x = 0   
+            row = []
+            for elem in line:
+                if elem == "E":
+                    ex = x
+                    ey = y
+                    row.append(26)
+                elif elem == "S":
+                    sx = x
+                    sy = y
+                    row.append(1)
+                elif elem == "\n":
+                    pass
+                else:
+                    row.append(ord(elem) - 96)
+                x += 1
+            map.append(row)
+            y+= 1
+        
 
-with open('input.txt', 'r') as f:
-    lines = f.readlines()
-    
-    map = [] 
-    for line in lines:
-        x = 0   
-        row = []
-        for elem in line:
-            if elem == "E":
-                ex = x
-                ey = y
-                row.append(26)
-            elif elem == "S":
-                sx = x
-                sy = y
-                row.append(1)
-            elif elem == "\n":
-                pass
-            else:
-                row.append(ord(elem) - 96)
-            x += 1
-        map.append(row)
-        y+= 1
-    
-
-    visited = []
-    queue = []
-    for y in range(len(map)):
-        for x in range(len(map[y])):
-            if map[y][x] == 1:
-                valueDict[str(x) + " " + str(y)] = 0
-                queue.append([x, y])
-                visited.append([x, y])
-    
-    print(bfs(visited, map, queue, ex, ey))
+        visited = []
+        queue = []
+        for y in range(len(map)):
+            for x in range(len(map[y])):
+                if map[y][x] == 1:
+                    valueDict[str(x) + " " + str(y)] = 0
+                    queue.append([x, y])
+                    visited.append([x, y])
+        
+        print(bfs(visited, map, queue, ex, ey, valueDict))
     
    
-                    
+if __name__ == "__main__":
+    main()           
