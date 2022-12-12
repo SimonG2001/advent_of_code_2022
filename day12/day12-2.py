@@ -27,6 +27,7 @@ def surroundValues(x, y, map):
 
 def dfs(visited, map, currX, currY, value):
     global valueDict, sx, sy, ex, ey, y, recCount
+    
     if [currX, currY] not in visited or valueDict[str(currX) + " " + str(currY)] > value:
         visited.append([currX, currY])
         
@@ -64,18 +65,25 @@ def dfs(visited, map, currX, currY, value):
         if currX > 0 and map[currY][currX-1] < currValue:
             dfs(visited, map, currX-1, currY, value)
     
-def bfs(visited, map, currX, currY, ex, ey):
-    global queue, valueDict
-    visited.append([currX, currY])
-    queue.append([currX, currY])
-    valueDict[str(currX) + " " + str(currY)] = 0
+def bfs(visited, map, queue, ex, ey):
+    global valueDict
+    m = queue.pop(0)
     while queue:
-        m = queue.pop(0)
+        smallest = 600
+        indexSmallest = 0
+        for i, pos in enumerate(queue):
+            if valueDict[str(pos[0]) + " " + str(pos[1])] < smallest:
+                smallest = valueDict[str(pos[0]) + " " + str(pos[1])]
+                indexSmallest = i
+
+        m = queue.pop(indexSmallest)
         
         currX = m[0]
         currY = m[1]
+
         myValue = valueDict[str(currX) + " " + str(currY)]
         if currX == ex and currY == ey:
+            
             return myValue
         currValue = map[currY][currX]
 
@@ -125,24 +133,18 @@ with open('input.txt', 'r') as f:
     #print("start: ", sx, " ", sy)
     #print("mål: ", ex, " ", ey)
 
-    shortest = 1000
     count = 0
+    visited = []
+    queue = []
     for y in range(len(map)):
-        print(count)
         for x in range(len(map[y])):
             if map[y][x] == 1:
-                visited = []
-                valueDict = {}
-                queue = []
-                count += 1
-                result = bfs(visited, map, x, y, ex, ey) 
-                
-                if result < shortest:
-                    shortest = result
-
-    visited = []
-    print(count)
-    print(shortest)
+                valueDict[str(x) + " " + str(y)] = 0
+                queue.append([x, y])
+                visited.append([x, y])
+    
+    print(bfs(visited, map, queue, ex, ey))
+    
     #print(len(map), len(map[0]), "Totala mängd: ", len(map[0])*len(map))
 
     #bfs(visited, map, sx, sy, ex, ey)
