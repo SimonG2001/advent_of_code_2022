@@ -76,8 +76,7 @@ def bfs(visited, map, currX, currY, ex, ey):
         currY = m[1]
         myValue = valueDict[str(currX) + " " + str(currY)]
         if currX == ex and currY == ey:
-            print(myValue)
-            return
+            return myValue
         currValue = map[currY][currX]
 
         if currY < len(map) - 1 and map[currY+1][currX] <= currValue + 1 and [currX, currY+1] not in visited:
@@ -97,7 +96,7 @@ def bfs(visited, map, currX, currY, ex, ey):
             queue.append([currX-1, currY])
             valueDict[str(currX-1) + " " + str(currY)] = myValue + 1
         
-    
+    return 520
     
 
 with open('input.txt', 'r') as f:
@@ -126,14 +125,28 @@ with open('input.txt', 'r') as f:
     #print("start: ", sx, " ", sy)
     #print("mål: ", ex, " ", ey)
 
-    
+    shortest = 1000
+    count = 0
+    for y in range(len(map)):
+        print(count)
+        for x in range(len(map[y])):
+            if map[y][x] == 1:
+                visited = []
+                valueDict = {}
+                queue = []
+                count += 1
+                result = bfs(visited, map, x, y, ex, ey) 
+                
+                if result < shortest:
+                    shortest = result
 
     visited = []
+    print(count)
+    print(shortest)
+    #print(len(map), len(map[0]), "Totala mängd: ", len(map[0])*len(map))
 
-    print(len(map), len(map[0]), "Totala mängd: ", len(map[0])*len(map))
-
-    bfs(visited, map, sx, sy, ex, ey)
-    print("klar")
+    #bfs(visited, map, sx, sy, ex, ey)
+    #print("klar")
     #print(visited)
     #print(valueDict)
                     
