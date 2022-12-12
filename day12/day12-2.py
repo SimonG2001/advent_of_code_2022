@@ -6,16 +6,9 @@ sx, sy, ex, ey, y = 0,0,0,0, 0
     
 def bfs(visited, map, queue, ex, ey):
     global valueDict
-    m = queue.pop(0)
     while queue:
-        smallest = 600
-        indexSmallest = 0
-        for i, pos in enumerate(queue):
-            if valueDict[str(pos[0]) + " " + str(pos[1])] < smallest:
-                smallest = valueDict[str(pos[0]) + " " + str(pos[1])]
-                indexSmallest = i
-
-        m = queue.pop(indexSmallest)
+        
+        m = queue.pop(0)
         
         currX = m[0]
         currY = m[1]
