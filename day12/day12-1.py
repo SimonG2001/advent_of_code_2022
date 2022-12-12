@@ -1,4 +1,3 @@
-import sys
 
 valueDict = {}
 sx, sy, ex, ey, y = 0,0,0,0,0
@@ -123,17 +122,12 @@ with open('input.txt', 'r') as f:
             x += 1
         map.append(row)
         y+= 1
-    #print("start: ", sx, " ", sy)
-    #print("mål: ", ex, " ", ey)
-
     
+
 
     visited = []
 
-    print(len(map), len(map[0]), "Totala mängd: ", len(map[0])*len(map))
 
     bfs(visited, map, sx, sy, ex, ey)
-    print("klar")
-    #print(visited)
-    #print(valueDict)
+   
                     
