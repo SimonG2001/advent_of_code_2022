@@ -1,7 +1,7 @@
 
 cycle, strength, pixelpos = 0, 1, 0
 
-with open('input.txt', 'r') as f:
+with open('day10/input.txt', 'r') as f:
     
     lines = f.readlines()
     picture = ""

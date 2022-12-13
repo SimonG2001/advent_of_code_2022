@@ -1,6 +1,5 @@
 
 
-
 def moveTail(hx, hy, tx, ty):
     if not (abs(hx - tx) <= 1 and abs(hy - ty) <= 1):
         if hx == tx:

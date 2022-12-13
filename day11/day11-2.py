@@ -1,6 +1,6 @@
 
 
-with open('input.txt', 'r') as f:
+with open('day11/input.txt', 'r') as f:
     
     lines = f.readlines()
     monkeys = []
@@ -63,7 +63,6 @@ with open('input.txt', 'r') as f:
                 else:
                     monkeys[monkey[4]][0].append(item)
     
-    print(inspect)
 
     inspect.sort()
     print(inspect[-1] * inspect[-2])

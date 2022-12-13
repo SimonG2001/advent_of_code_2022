@@ -1,7 +1,6 @@
 
 
 
-
     
 def bfs(visited, map, queue, ex, ey, valueDict):
     while queue:

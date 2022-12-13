@@ -43,7 +43,7 @@ def comparePair(left, right):
 
 def main():
     score = 0
-    with open('input.txt', 'r') as f:
+    with open('day13/input.txt', 'r') as f:
         lines = f.readlines()
         
         all = []

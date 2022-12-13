@@ -1,6 +1,6 @@
 
 
-with open('input.txt', 'r') as f:
+with open('day11/input.txt', 'r') as f:
     
     lines = f.readlines()
     monkeys = []

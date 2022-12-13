@@ -1,7 +1,6 @@
 import json
 
 def comparePair(left, right):
-    print("left", left, "right", right)
     if right == [] and left == []:
         return 1
     elif left == []:
@@ -43,7 +42,7 @@ def comparePair(left, right):
 
 def main():
     score = 0
-    with open('input.txt', 'r') as f:
+    with open('day13/input.txt', 'r') as f:
         lines = f.readlines()
         pair_number = 1
         left = ""
@@ -66,21 +65,13 @@ def main():
                     mode += 1
                 else:
                     right = line
-                    #print("Pair", pair_number, left, right)
-                    '''if pair_number == 4:
-                        if comparePair(left, right) == 2:
-                            
-                            print("Pair", pair_number,"left:", left,"right", right)
-                            score += pair_number
-                    '''
+                    
                     if comparePair(left, right) == 2:
                         
-                        print("Pair", pair_number,"left:", left,"right", right)
                         score += pair_number
                     
                     mode = 1
         print(score)
-        #print(pair_number)
 
 
 if __name__ == "__main__":
