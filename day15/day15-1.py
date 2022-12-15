@@ -31,11 +31,11 @@ def main():
 
 
         
-        print(sensors)
-        startX = -10
+        #print(sensors)
+        startX = -100000
         posY = 2000000
         found = []
-        for i in range(5000000):
+        for i in range(6000000):
             posX = startX + i
             for elem in sensors:
                 if abs(elem[0]-posX) + abs(elem[1] - posY) <= elem[2] and beacons.count([posX, posY]) == 0:
