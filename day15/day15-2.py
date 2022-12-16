@@ -43,10 +43,7 @@ def main():
             sensors[i].append(dist)
 
         pointsToCheck = []
-        print("start")
-        print(len(sensors))
         for i, elem in enumerate(sensors):
-            print(i)
             middlePointX = elem[0]
             middlePointY = elem[1]
             dir = 0
@@ -78,16 +75,15 @@ def main():
 
                         break
 
-        beacons = list(dict.fromkeys(beacons))
      
-        print("klar")
-        
-        
-        #print(sensors)
         x, y = getMissingBeacon(sensors, pointsToCheck)
+<<<<<<< HEAD
         #x, y = 2721114, 3367718
         #print(found)
         print(x, y)
+=======
+        
+>>>>>>> 067e48575373a62707ea58161ddb63b223b3e2f0
         print(x*4000000 + y)
 
 if __name__ == "__main__": 
