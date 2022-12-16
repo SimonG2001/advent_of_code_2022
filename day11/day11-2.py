@@ -37,7 +37,6 @@ with open('day11/input.txt', 'r') as f:
     monkeys.append(monkey)
     inspect = []
     modulo = 1
-
     for i in monkeys:
         inspect.append(0)
         modulo *= i[2]

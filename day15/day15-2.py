@@ -53,6 +53,7 @@ def main():
             posX = middlePointX
             posY = middlePointY + elem[2] + 1
             while True:
+            
                 if posX >= 0 and posY >= 0 and posX < 4000000 and posY < 4000000:
                     pointsToCheck.append([posX, posY])
                 if dir == 0:
@@ -84,10 +85,10 @@ def main():
         
         #print(sensors)
         x, y = getMissingBeacon(sensors, pointsToCheck)
-        
+        #x, y = 2721114, 3367718
         #print(found)
         print(x, y)
-        #print(x*4000000 + y)
+        print(x*4000000 + y)
 
 if __name__ == "__main__": 
     main()           
