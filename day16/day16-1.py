@@ -3,7 +3,10 @@ def shortestDist(start, end, startTime, valves):
     queue.append(start)
     timetot = startTime
     while queue:
-
+        timetot +=1
+        if timetot == 30:
+            return -1
+        
 
 
 def best(timeLeft, totalFlowRate, totalFlown, currentPos, valves, openvalves):
